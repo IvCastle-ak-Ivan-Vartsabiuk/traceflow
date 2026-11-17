@@ -1,0 +1,25 @@
+node_modules/
+dist/
+.env
+.venv/
+__pycache__/
+*.pyc
+db.sqlite3
+
+
+# Секретні налаштування
+.env
+.env.*
+!.env.example
+
+# Python
+.venv/
+__pycache__/
+*.pyc
+
+# Node.js
+node_modules/
+dist/
+
+# VS Code
+.vscode/

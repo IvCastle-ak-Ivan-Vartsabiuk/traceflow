@@ -1,0 +1,8 @@
+import React,{useMemo,useState} from 'react';
+import {Plus,Search,SlidersHorizontal} from 'lucide-react';
+import RequirementCard from '../components/RequirementCard';
+export default function Requirements({requirements,links,onAdd,onEdit,onDelete}){
+ const [query,setQuery]=useState('');const [filter,setFilter]=useState('all');
+ const list=useMemo(()=>requirements.filter(r=>(r.title+' '+(r.description||'')+' '+(r.code||'')).toLowerCase().includes(query.toLowerCase())&&(filter==='all'||r.status===filter)),[requirements,query,filter]);
+ return <><div className="section-toolbar"><div><h2>Реєстр вимог</h2><p>Керуйте функціональними вимогами та їх покриттям.</p></div><button className="btn primary" onClick={onAdd}><Plus size={18}/> Додати вимогу</button></div><div className="filter-bar"><label className="search-box"><Search size={18}/><input placeholder="Пошук за назвою або описом..." value={query} onChange={e=>setQuery(e.target.value)}/></label><label className="select-box"><SlidersHorizontal size={17}/><select aria-label="Фільтр статусу" value={filter} onChange={e=>setFilter(e.target.value)}><option value="all">Усі статуси</option><option value="draft">Чернетка</option><option value="active">Активна</option><option value="completed">Виконана</option></select></label></div><div className="result-bar">Показано <strong>{list.length}</strong> із {requirements.length} вимог</div><div className="requirements-grid">{list.map(item=><RequirementCard key={item.id} item={item} testCount={new Set(links.filter(l=>String(l.requirementId)===String(item.id)).map(l=>l.testCaseId)).size} onEdit={onEdit} onDelete={onDelete}/>)}</div>{!list.length&&<div className="empty-state">За вашим запитом вимог не знайдено.</div>}</>;
+}

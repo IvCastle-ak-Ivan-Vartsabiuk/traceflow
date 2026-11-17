@@ -1,0 +1,96 @@
+{
+  "requirements": [
+    {
+      "id": 1,
+      "code": "REQ-001",
+      "title": "Авторизація користувача",
+      "description": "Вхід до системи за логіном і паролем з перевіркою ролі.",
+      "priority": "high",
+      "status": "active"
+    },
+    {
+      "id": 2,
+      "code": "REQ-002",
+      "title": "Управління вимогами",
+      "description": "Створення, редагування та перегляд функціональних вимог.",
+      "priority": "high",
+      "status": "active"
+    },
+    {
+      "id": 3,
+      "code": "REQ-003",
+      "title": "Експорт звітів",
+      "description": "Завантаження матриці трасування у форматі CSV.",
+      "priority": "medium",
+      "status": "draft"
+    },
+    {
+      "id": 4,
+      "code": "REQ-004",
+      "title": "Матриця трасування",
+      "description": "Перегляд зв’язків між вимогами та тест-кейсами.",
+      "priority": "high",
+      "status": "active"
+    },
+    {
+      "id": 5,
+      "code": "REQ-005",
+      "title": "Пошук і фільтрація",
+      "description": "Швидкий пошук вимог за текстом і статусом.",
+      "priority": "medium",
+      "status": "completed"
+    }
+  ],
+  "testCases": [
+    {
+      "id": 1,
+      "code": "TC-001",
+      "title": "Успішна авторизація",
+      "steps": "Ввести коректні облікові дані",
+      "expectedResult": "Відкрито особистий кабінет"
+    },
+    {
+      "id": 2,
+      "code": "TC-002",
+      "title": "Створення нової вимоги",
+      "steps": "Заповнити та зберегти форму",
+      "expectedResult": "Вимога відображається у списку"
+    },
+    {
+      "id": 3,
+      "code": "TC-003",
+      "title": "Перевірка матриці трасування",
+      "steps": "Відкрити сторінку матриці",
+      "expectedResult": "Показані всі зв’язки"
+    },
+    {
+      "id": 4,
+      "code": "TC-004",
+      "title": "Пошук за назвою",
+      "steps": "Ввести пошуковий запит",
+      "expectedResult": "Список відфільтровано"
+    }
+  ],
+  "traceLinks": [
+    {
+      "id": 1,
+      "requirementId": 1,
+      "testCaseId": 1
+    },
+    {
+      "id": 2,
+      "requirementId": 2,
+      "testCaseId": 2
+    },
+    {
+      "id": 3,
+      "requirementId": 4,
+      "testCaseId": 3
+    },
+    {
+      "id": 4,
+      "requirementId": 5,
+      "testCaseId": 4
+    }
+  ]
+}
